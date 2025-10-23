@@ -109,9 +109,12 @@ function App() {
           <h2 className="card-title">Projects</h2>
           <div className="projects-grid">
             {projects.map((p) => (
-              <div key={p.id} className="project-card" onClick={() => openProject(p)}>
+              <div key={p.id} className="project-card">
                 <div className="project-title">{p.title}</div>
                 <div className="project-blurb">{p.blurb}</div>
+                <div className="project-actions">
+                  <button className="view-more" onClick={() => openProject(p)}>View more</button>
+                </div>
               </div>
             ))}
           </div>

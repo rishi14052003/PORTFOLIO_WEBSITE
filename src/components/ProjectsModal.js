@@ -11,7 +11,13 @@ export default function ProjectsModal({ open, project, onClose }) {
         <p className="modal-desc">{project.description}</p>
         {project.link && (
           <p>
-            <a href={project.link} target="_blank" rel="noreferrer">View Project</a>
+            <button
+              className="github-btn"
+              onClick={() => window.open(project.link, '_blank', 'noreferrer')}
+              aria-label={`Open ${project.title} on GitHub`}
+            >
+              GitHub
+            </button>
           </p>
         )}
       </div>
