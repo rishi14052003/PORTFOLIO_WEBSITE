@@ -17,7 +17,7 @@ function App() {
       title: 'Movie Ticket Booking Website', 
       blurb: 'Full-stack platform handling 50+ movies and 100+ users',
       description: 'Engineered a full-stack booking platform handling 50+ movie listings and 100+ user accounts with MongoDB backend. Implemented RESTful APIs that improved query response times by 30%, enhancing database efficiency. Delivered a responsive UI that improved user interaction speed by 25%, increasing session duration and engagement.',
-      link: 'https://github.com/rishi14052003/movie-booking'
+      link: 'https://github.com/rishi14052003/ShowTimeBooker'
     },
     { 
       id: 2, 
@@ -81,12 +81,14 @@ function App() {
             id="publications"
             title="Publications / Patents"
             text={
-              <>
-                LIPNET: Deep Learning for Visual Speech Recognition — TensorFlow/PyTorch, OpenCV, NumPy, Keras 
-                {' '}
-                <a href="https://www.ijset.in/lipnet-deep-learning-visual-speech-recognitions/" target="_blank" rel="noreferrer">View</a>
-              </>
-            }
+                <>
+                  LIPNET: Deep Learning for Visual Speech Recognition — TensorFlow/PyTorch, OpenCV, NumPy, Keras 
+                  {' '}
+                  <a href="https://www.ijset.in/lipnet-deep-learning-visual-speech-recognitions/" target="_blank" rel="noreferrer">View Publication</a>
+                  {' '}-{' '}
+                  <a href="https://github.com/rishi14052003/lip_parser" target="_blank" rel="noreferrer">Github Link</a>
+                </>
+              }
             subtext="Published April 2025 | DOI: 10.61463/ijset.vol.13.issue2.210"
           />
         </div>
