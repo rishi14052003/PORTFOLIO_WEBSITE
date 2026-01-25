@@ -32,36 +32,38 @@ const Education = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="timeline-item" variants={itemVariants}>
-          <motion.div 
-            className="timeline-date"
-            whileHover={{ scale: 1.05, color: "var(--accent-color)" }}
-            transition={{ duration: 0.3 }}
-          >
-            {educationData.period}
+        {educationData.map((edu, index) => (
+          <motion.div key={index} className="timeline-item" variants={itemVariants}>
+            <motion.div 
+              className="timeline-date"
+              whileHover={{ scale: 1.05, color: "var(--accent-color)" }}
+              transition={{ duration: 0.3 }}
+            >
+              {edu.period}
+            </motion.div>
+            <motion.div 
+              className="timeline-title"
+              whileHover={{ x: 10, color: "var(--accent-color)" }}
+              transition={{ duration: 0.3 }}
+            >
+              {edu.degree}
+            </motion.div>
+            <motion.div 
+              className="timeline-subtitle"
+              whileHover={{ x: 5 }}
+              transition={{ duration: 0.3 }}
+            >
+              {edu.institution}
+            </motion.div>
+            <motion.div 
+              className="timeline-description"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {edu.cgpa ? `CGPA: ${edu.cgpa}` : `Percentage: ${edu.percentage}`}
+            </motion.div>
           </motion.div>
-          <motion.div 
-            className="timeline-title"
-            whileHover={{ x: 10, color: "var(--accent-color)" }}
-            transition={{ duration: 0.3 }}
-          >
-            {educationData.degree}
-          </motion.div>
-          <motion.div 
-            className="timeline-subtitle"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.3 }}
-          >
-            {educationData.institution}
-          </motion.div>
-          <motion.div 
-            className="timeline-description"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            CGPA: {educationData.cgpa}
-          </motion.div>
-        </motion.div>
+        ))}
       </motion.div>
     </AnimatedSection>
   );
