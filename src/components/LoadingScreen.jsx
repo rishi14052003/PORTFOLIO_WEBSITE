@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const LoadingScreen = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!isLoading) return null;
-
   return (
     <motion.div 
       className="fixed inset-0 z-50 flex items-center justify-center"
@@ -21,70 +9,30 @@ const LoadingScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
-      <div className="text-center">
+      <div className="flex flex-col items-center gap-2">
+        {/* Loading Spinner */}
         <motion.div
-          className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+          className="w-8 h-8 rounded-full border-2 border-b-2"
           style={{
-            background: 'var(--gradient-primary)',
-            boxShadow: '0 10px 30px rgba(102, 126, 234, 0.3)'
+            borderTopColor: 'transparent',
+            borderColor: 'var(--accent-color)',
+            background: 'linear-gradient(135deg, var(--accent-color), #2563eb)'
           }}
-          animate={{
-            rotate: 360,
-            scale: [1, 1.2, 1]
-          }}
-          transition={{
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
-          }}
-        >
-          RJ
-        </motion.div>
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+        />
         
-        <motion.h1
-          className="text-3xl font-bold mb-2"
-          style={{ color: 'var(--text-primary)' }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+        {/* Loading Text */}
+        <motion.span
+          className="text-slate-400 text-xs"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Rishabh Hitesh Jain
-        </motion.h1>
-        
-        <motion.p
-          className="text-lg"
-          style={{ color: 'var(--text-secondary)' }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          Software Engineer
-        </motion.p>
-        
-        <motion.div
-          className="flex justify-center mt-6 space-x-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              className="w-2 h-2 rounded-full"
-              style={{ backgroundColor: 'var(--accent-color)' }}
-              animate={{
-                y: [0, -10, 0],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                delay: i * 0.2
-              }}
-            />
-          ))}
-        </motion.div>
+          Loading...
+        </motion.span>
       </div>
     </motion.div>
   );
