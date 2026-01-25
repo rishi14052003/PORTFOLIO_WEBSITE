@@ -1,15 +1,22 @@
 import React from 'react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <p>&copy; 2025 Rishabh Hitesh Jain. All rights reserved.</p>
+          <p>Rishabh Hitesh Jain</p>
           <div className="social-links">
-            <a href="https://github.com/rishi14052003" target="_blank" rel="noreferrer" className="social-link">🐙</a>
-            <a href="https://linkedin.com/in/rishi14052003" target="_blank" rel="noreferrer" className="social-link">💼</a>
-            <a href="mailto:rishabh.jain@example.com" target="_blank" rel="noreferrer" className="social-link">📧</a>
+            <a href="https://github.com/rishi14052003" target="_blank" rel="noreferrer" className="social-link">
+              <Github size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/rishabh-jain-a34623227/" target="_blank" rel="noreferrer" className="social-link">
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:siddh2606@gmail.com" target="_blank" rel="noreferrer" className="social-link">
+              <Mail size={20} />
+            </a>
           </div>
         </div>
       </div>

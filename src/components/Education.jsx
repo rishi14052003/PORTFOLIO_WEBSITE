@@ -1,10 +1,11 @@
 import React from 'react';
+import { GraduationCap } from 'lucide-react';
 
 const Education = () => {
   return (
     <section className="section" id="education">
       <h2 className="section-title">
-        <span className="section-icon">🎓</span>
+        <GraduationCap className="section-icon" size={24} />
         Education
       </h2>
       <div className="timeline">

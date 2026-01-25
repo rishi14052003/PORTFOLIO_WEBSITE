@@ -1,4 +1,5 @@
 import React from 'react';
+import { Rocket } from 'lucide-react';
 
 const projects = [
   { 
@@ -31,7 +32,7 @@ const Projects = ({ openProject }) => {
   return (
     <section className="section" id="projects">
       <h2 className="section-title">
-        <span className="section-icon">🚀</span>
+        <Rocket className="section-icon" size={24} />
         Featured Projects
       </h2>
       <div className="projects-grid">

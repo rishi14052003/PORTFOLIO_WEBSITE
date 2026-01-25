@@ -1,10 +1,11 @@
 import React from 'react';
+import { BookOpen } from 'lucide-react';
 
 const Publications = () => {
   return (
     <section className="section" id="publications">
       <h2 className="section-title">
-        <span className="section-icon">📚</span>
+        <BookOpen className="section-icon" size={24} />
         Publications
       </h2>
       <div style={{ color: 'var(--text-secondary)' }}>

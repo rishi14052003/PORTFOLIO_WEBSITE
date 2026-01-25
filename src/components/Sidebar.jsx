@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 
 const Sidebar = () => {
   return (
@@ -23,20 +24,20 @@ const Sidebar = () => {
       <div className="sidebar-card contact-card" id="contact">
         <h2 className="sidebar-title">Contact</h2>
         <div className="contact-info">
-          <a href="mailto:rishabh.jain@example.com" className="contact-item">
-            <span className="contact-icon">📧</span>
-            <span>rishabh.jain@example.com</span>
+          <a href="mailto:siddh2606@gmail.com" className="contact-item">
+            <Mail className="contact-icon" size={20} />
+            <span>siddh2606@gmail.com</span>
           </a>
-          <a href="tel:+919876543210" className="contact-item">
-            <span className="contact-icon">📱</span>
-            <span>+91 98765 43210</span>
+          <a href="tel:+919099999309" className="contact-item">
+            <Phone className="contact-icon" size={20} />
+            <span>+91 90999 99309</span>
           </a>
-          <a href="https://linkedin.com/in/rishi14052003" target="_blank" rel="noreferrer" className="contact-item">
-            <span className="contact-icon">💼</span>
+          <a href="https://www.linkedin.com/in/rishabh-jain-a34623227/" target="_blank" rel="noreferrer" className="contact-item">
+            <Linkedin className="contact-icon" size={20} />
             <span>LinkedIn</span>
           </a>
           <a href="https://github.com/rishi14052003" target="_blank" rel="noreferrer" className="contact-item">
-            <span className="contact-icon">🐙</span>
+            <Github className="contact-icon" size={20} />
             <span>GitHub</span>
           </a>
         </div>

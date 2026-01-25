@@ -1,10 +1,11 @@
 import React from 'react';
+import { Zap } from 'lucide-react';
 
 const Skills = () => {
   return (
     <section className="section" id="skills">
       <h2 className="section-title">
-        <span className="section-icon">⚡</span>
+        <Zap className="section-icon" size={24} />
         Skills
       </h2>
       <div className="skills-list">

@@ -216,12 +216,11 @@ body {
 }
 
 .contact-icon {
-  width: 20px;
-  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
+  flex-shrink: 0;
 }
 
 /* Content Area */
@@ -256,9 +255,11 @@ body {
 }
 
 .section-icon {
-  width: 24px;
-  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent-color);
+  flex-shrink: 0;
 }
 
 /* Projects Grid */
