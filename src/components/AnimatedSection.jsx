@@ -56,7 +56,7 @@ const AnimatedSection = ({ children, id, className = "", animation = "fadeInUp" 
       className={className}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
-      variants={animations[animation]}
+      variants={typeof animation === "string" ? animations[animation] : animation}
     >
       {children}
     </motion.div>

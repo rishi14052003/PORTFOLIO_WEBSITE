@@ -5,6 +5,8 @@ export const contactInfo = {
   github: 'https://github.com/rishi14052003'
 };
 
+export const resumeUrl = 'https://drive.google.com/file/d/1REaNk8y5p_qh_sWnH7HngRm-thke4dFJ/view?usp=sharing';
+
 export const personalInfo = {
   name: 'Rishabh Hitesh Jain',
   title: 'Software Engineer',

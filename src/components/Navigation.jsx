@@ -1,66 +1,118 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useMousePosition } from '../hooks/useMousePosition.js';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+
+const items = ['About', 'Education', 'Experience', 'Skills', 'Publications', 'Projects', 'Credentials', 'Testimonials', 'GitHub', 'Contact'];
 
 const Navigation = ({ scrollToSection }) => {
-  const mousePosition = useMousePosition();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const navRef = useRef(null);
 
-  const calculateParallax = (elementX, elementY, intensity = 0.02) => {
-    const deltaX = (mousePosition.x - elementX) * intensity;
-    const deltaY = (mousePosition.y - elementY) * intensity;
-    return { x: deltaX, y: deltaY };
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -65% 0px' }
+    );
+
+    items.forEach((item) => {
+      const section = document.getElementById(item.toLowerCase());
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const closeOnOutsideClick = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [menuOpen]);
 
   return (
-    <motion.nav 
+    <motion.nav
+      ref={navRef}
       className="nav"
+      aria-label="Main navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="container">
-        <motion.div 
-          className="nav-content"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.div 
+        <div className="nav-content">
+          <a
             className="nav-logo"
-            whileHover={{ 
-              rotate: 360, 
-              scale: 1.2,
-              textShadow: "0 0 30px rgba(102, 126, 234, 0.5)"
+            href="#home"
+            onClick={(event) => {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setMenuOpen(false);
             }}
-            transition={{ duration: 0.6 }}
+            aria-label="Rishabh Jain, back to top"
           >
-            RJ
-          </motion.div>
-          <motion.ul className="nav-menu">
-            {['About', 'Education', 'Experience', 'Skills', 'Projects', 'Contact'].map((item, index) => (
+            <span>RJ</span><span className="nav-logo-dot">.</span>
+          </a>
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={21} /> : <Menu size={21} />}
+          </button>
+          <motion.ul
+            className={`nav-menu${menuOpen ? ' is-open' : ''}`}
+            id="primary-navigation"
+            initial={false}
+          >
+            {items.map((item, index) => (
               <motion.li key={item}>
-                <motion.a 
+                <motion.a
                   href={`#${item.toLowerCase()}`}
-                  className="nav-link"
-                  onClick={(e) => { 
-                    e.preventDefault(); 
-                    scrollToSection(item.toLowerCase()); 
+                  className={`nav-link${item === 'Contact' ? ' nav-link-contact' : ''}${activeSection === item.toLowerCase() ? ' is-active' : ''}`}
+                  aria-current={activeSection === item.toLowerCase() ? 'location' : undefined}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToSection(item.toLowerCase());
+                    setMenuOpen(false);
                   }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.1, 
-                    color: "var(--accent-color)",
-                    textShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
-                  }}
+                  whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {item}
+                  {item === 'Contact' && <ArrowUpRight size={14} aria-hidden="true" />}
                 </motion.a>
               </motion.li>
             ))}
           </motion.ul>
-        </motion.div>
+        </div>
       </div>
     </motion.nav>
   );

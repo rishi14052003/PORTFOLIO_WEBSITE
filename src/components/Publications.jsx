@@ -74,7 +74,7 @@ const Publications = () => {
             transition={{ duration: 0.3 }}
           >
             <div style={{ color: 'var(--text-secondary)' }}>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <div className="publication-actions">
                 <a href="https://www.ijset.in/lipnet-deep-learning-visual-speech-recognitions/" target="_blank" rel="noreferrer" className="btn btn-secondary">
                   View Publication
                 </a>
