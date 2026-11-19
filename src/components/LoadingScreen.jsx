@@ -18,7 +18,7 @@ const LoadingScreen = () => {
           style={{
             borderTopColor: 'transparent',
             borderColor: 'var(--accent-color)',
-            background: 'linear-gradient(135deg, var(--accent-color), #2563eb)'
+            background: 'var(--white)'
           }}
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}

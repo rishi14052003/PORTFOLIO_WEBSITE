@@ -13,7 +13,7 @@ export const skillsCategories = [
   },
   {
     category: 'Cloud',
-    items: 'AWS Certified, cloud deployment and management'
+    items: 'Cloud deployment and management'
   },
   {
     category: 'Problem-Solving',

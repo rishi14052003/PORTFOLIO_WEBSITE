@@ -46,19 +46,19 @@ const Sidebar = () => {
           whileHover={{ 
             rotate: 360, 
             scale: 1.1,
-            boxShadow: "0 15px 40px rgba(102, 126, 234, 0.4)"
+            boxShadow: "0 15px 40px rgba(255, 255, 255, 0.14)"
           }}
           transition={{ duration: 0.8 }}
         >
           RJ
         </motion.div>
-        <motion.h1 
+        <motion.h2
           className="intro-name"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
           Rishabh Hitesh Jain
-        </motion.h1>
+        </motion.h2>
         <motion.p 
           className="intro-title"
           whileHover={{ x: 5 }}
@@ -109,7 +109,7 @@ const Sidebar = () => {
 
       <motion.div 
         className="sidebar-card contact-card" 
-        id="contact"
+        id="contact-info"
         variants={cardVariants}
         initial="hidden"
         animate="visible"
